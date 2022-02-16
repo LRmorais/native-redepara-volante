@@ -2,8 +2,11 @@ import React, {useState, useRef, useEffect, useCallback} from 'react';
 import {View, Dimensions, StyleSheet, Alert, BackHandler} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
+
 import {GOOGLE_MAP_KEY} from '../../constantes/googleMapsKey';
 import imagePath from '../../constantes/imagePath';
+import InitialIcon from '../../assets/icons/map-marker-alt.svg'
+import FinalIcon from '../../assets/icons/map-marker-check.svg'
 
 import TrackPlayer, {RepeatMode, usePlaybackState} from 'react-native-track-player';
 
@@ -145,7 +148,7 @@ export const Maps: React.FC = props => {
               destination={destinationCords}
               apikey={GOOGLE_MAP_KEY}
               strokeWidth={3}
-              strokeColor="#6D5FFD"
+              strokeColor="#EF3C35"
               optimizeWaypoints={true}
               onReady={result => {
                 //@ts-ignore
@@ -166,12 +169,14 @@ export const Maps: React.FC = props => {
         {data ? (
           <InfoWrapper>
             <RowWrapper>
-              <MarkerIcon name="map-marker-alt" color="#ee0606" />
+              {/* <MarkerIcon name="map-marker-alt" color="#ee0606" /> */}
+              <InitialIcon width={30} height={30} fill="#EF3C35"/>
               <InfoText>{data.start}</InfoText>
             </RowWrapper>
             <Separator />
             <RowWrapper>
-              <MarkerIcon name="map-marker-alt" color="rgb(109, 95, 253)" />
+              {/* <MarkerIcon name="map-marker-alt" color="rgb(109, 95, 253)" /> */}
+              <FinalIcon width={30} height={30} fill="#EF3C35" />
               <InfoText>{data.end}</InfoText>
             </RowWrapper>
           </InfoWrapper>
@@ -188,8 +193,8 @@ export const Maps: React.FC = props => {
             // setStart('On');
           }}>
           <MusicPlayer
-            circleProgressColor="#FFF"
-            initialProgressColor="#fff"
+            circleProgressColor="#EF3C35"
+            initialProgressColor="#EF3C35"
             valuesProgressColor="#fff"
             playButton={false}
           />

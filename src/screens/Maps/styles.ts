@@ -8,7 +8,7 @@ export const Header = styled.View`
   height: ${RFPercentage(8)}px;
   justify-content: flex-end;
   flex-direction: column;
-  background-color: ${({theme}) => theme.colors.primary};
+  background-color: ${({theme}) => theme.colors.primaryColor};
 `;
 export const BackButton = styled.TouchableOpacity`
   flex-direction: row;
@@ -26,7 +26,7 @@ export const BackIcon = styled(AntDesign)`
   color: ${({theme}) => theme.colors.shape};
 `;
 export const ButtonContainer = styled.TouchableOpacity`
-  background-color: ${({theme}) => theme.colors.primary};
+  background-color: ${({theme}) => theme.colors.primaryColor};
   width: 100%;
   padding: 15px;
   border-top-left-radius: 24px;
@@ -52,6 +52,7 @@ export const InfoWrapper = styled.View`
 export const RowWrapper = styled.View`
   flex-direction: row;
   align-items: center;
+  padding: 3px;
 `;
 export const MarkerIcon = styled(FontAwesome5)`
   padding: 15px;
@@ -73,7 +74,7 @@ export const Separator = styled.View`
 
 export const ButtonTitle = styled.Text`
   font-size: ${RFValue(15)}px;
-  color: ${({theme}) => theme.colors.shape};
+  color: ${({theme}) => theme.colors.secondaryColor};
 `;
 
 export const PlayerContainer = styled.View`
