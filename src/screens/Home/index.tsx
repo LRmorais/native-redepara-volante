@@ -1,9 +1,13 @@
 import React from 'react';
+import logoImg from '../../assets/images/logo.png'
+
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { RouteProp } from '@react-navigation/native';
 import {RacesCard, RacingCardProps} from '../../components/RacesCard';
 
 import {
   Container,
+  Logo,
   Welcome,
   AmountContent,
   AmountWrapper,
@@ -22,9 +26,12 @@ export interface DatalistProps extends RacingCardProps {
 
 interface HomeProps {
   navigation: NativeStackNavigationProp<any, any>;
+  route: RouteProp<any,any>;
 }
 
-export function Home({navigation}: HomeProps) {
+export function Home({navigation, route}: HomeProps) {
+  const name: string = route.params?.name;
+
   const data: DatalistProps[] = [
     {
       id: '1',
@@ -97,7 +104,8 @@ export function Home({navigation}: HomeProps) {
   ];
   return (
     <Container>
-      <Welcome>Bem vindo, Pedro!</Welcome>
+      <Logo source={logoImg} resizeMode='contain'/>
+      <Welcome>{`Bem vindo, ${name ? name : 'admin'}!`}</Welcome>
       <AmountContent>
         <AmountWrapper>
           <Label>Ganhos</Label>

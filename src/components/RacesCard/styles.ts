@@ -2,7 +2,9 @@ import styled from 'styled-components/native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {RFValue} from 'react-native-responsive-fontsize';
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7
+})`
   border-radius: 5px;
 
   flex-direction: row;
@@ -25,7 +27,7 @@ export const IconWrapper = styled.View`
   justify-content: center;
   align-items: center;
 
-  background-color: ${({theme}) => theme.colors.secondary_light};
+  background-color: ${({theme}) => theme.colors.background};
 `;
 export const Route = styled.View`
   justify-content: space-between;
@@ -36,13 +38,13 @@ export const Track = styled.Text`
   margin-left: 20px;
   font-size: ${RFValue(15)}px;
   font-weight: bold;
-  color: ${({theme}) => theme.colors.text_dark};
+  color: ${({theme}) => theme.colors.text};
 `;
 
 export const InfoWrapper = styled.View``;
 
 export const Price = styled.Text`
-  color: ${({theme}) => theme.colors.text_dark};
+  color: ${({theme}) => theme.colors.text};
   font-size: ${RFValue(13)}px;
   font-weight: 600;
   margin-top: 2px;
@@ -50,5 +52,5 @@ export const Price = styled.Text`
 
 export const Icon = styled(FontAwesome5)`
   font-size: ${RFValue(20)}px;
-  color: ${({theme}) => theme.colors.primary};
+  color: ${({theme}) => theme.colors.secondaryColor};
 `;

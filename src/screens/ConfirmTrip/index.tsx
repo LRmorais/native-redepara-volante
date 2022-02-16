@@ -3,6 +3,11 @@ import {MusicPlayer} from '../../components/MusicPlayer/index';
 import TrackPlayer from 'react-native-track-player';
 
 import {Button} from '../../components/Forms/Button';
+import RouteIcon from '../../assets/icons/route.svg'
+import InitialMap from '../../assets/icons/map-marker-alt.svg'
+import FinalMap from '../../assets/icons/map-marker-check.svg'
+import BadgeIcon from '../../assets/icons/badge-dollar.svg'
+import AudioIcon from '../../assets/icons/megaphone.svg'
 
 import {
   Container,
@@ -12,8 +17,10 @@ import {
   HeaderText,
   InfoContainer,
   InfoBox,
+  WrapperInfos,
   Texts,
   ContainerButton,
+  PlayerContainer
 } from './styles';
 
 interface Data {
@@ -39,26 +46,53 @@ export function ConfirmTrip(props: any) {
             await TrackPlayer.pause();
             props.navigation.navigate('Home');
           }}>
-          {/* <BackIcon name="arrowleft" /> */}
+          <BackIcon name="arrowleft" />
           <HeaderText>Voltar</HeaderText>
         </BackButton>
       </Header>
       <Container>
+
         <InfoContainer>
           <InfoBox>
-            <Texts>{`Saída: ${data.start}`}</Texts>
-            <Texts>{`Chegada: ${data.end}`}</Texts>
-            <Texts>{`Preço: ${data.price}`}</Texts>
-            <Texts>{`Distância total: ${data.distance}`}</Texts>
-            <Texts>Áudio Publicidade :</Texts>
+            <WrapperInfos>
+              <InitialMap width={30} height={30} fill={"#EF3C35"}/>
+              <Texts>{`Saída: ${data.start}`}</Texts>
+            </WrapperInfos>
+
+            <WrapperInfos>
+              <FinalMap width={30} height={30} fill={"#EF3C35"}/>
+              <Texts>{`Chegada: ${data.end}`}</Texts> 
+            </WrapperInfos>
+
+            <WrapperInfos>
+              <BadgeIcon width={30} height={30} fill={"#EF3C35"}/>
+              <Texts>{`Preço: ${data.price}`}</Texts>
+            </WrapperInfos>
+
+            <WrapperInfos>
+              <RouteIcon width={30} height={30} fill={"#EF3C35"}/>
+              <Texts>{`Distância total: ${data.distance}`}</Texts>
+            </WrapperInfos>
+
+            <WrapperInfos>
+              <AudioIcon width={30} height={30} fill={"#EF3C35"}/>
+              <Texts>Áudio Publicidade :</Texts>
+            </WrapperInfos>
+
+
+
           </InfoBox>
 
-          <MusicPlayer
-            playButton={true}
-            circleProgressColor="#6D5FFD"
-            initialProgressColor="#6D5FFD"
-            valuesProgressColor="#000"
-          />
+          <PlayerContainer>
+            <MusicPlayer
+              playButton={true}
+              circleProgressColor="#EF3C35"
+              initialProgressColor="#EF3C35"
+              valuesProgressColor="#fff"
+            />
+          </PlayerContainer>
+
+
 
           <ContainerButton>
           <Button

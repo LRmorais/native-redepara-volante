@@ -78,7 +78,7 @@ export function MusicPlayer({
   return (
     <View style={styles.container}>
       <View style={{flexDirection: 'row'}}>
-        <Text style={{color: valuesProgressColor}}>
+        <Text style={{color: valuesProgressColor, fontSize: 15}}>
           {new Date(progress.position * 1000).toISOString().substr(14, 5)}
         </Text>
         <Slider
@@ -94,14 +94,14 @@ export function MusicPlayer({
           }}
         />
 
-        <Text style={{color: valuesProgressColor}}>
+        <Text style={{color: valuesProgressColor, fontSize: 15}}>
           {new Date(progress.duration * 1000).toISOString().substr(14, 5)}
         </Text>
       </View>
       {playButton ? (
         <TouchableOpacity onPress={() => togglePlayback(playbackState)}>
           <Ionicons
-            color="#6D5FFD"
+            color="#EF3C35"
             size={50}
             name={playbackState === State.Playing ? 'pause-circle' : 'play'}
           />

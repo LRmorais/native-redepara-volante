@@ -1,6 +1,6 @@
 import {RFValue} from 'react-native-responsive-fontsize';
 import styled from 'styled-components/native';
-import { TextInputProps, TextInput } from 'react-native'
+import { TextInputProps } from 'react-native'
 
 interface PropsLabel {
   labelColor?: string;

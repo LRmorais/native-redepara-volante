@@ -3,6 +3,8 @@ export default {
     primary: '#6D5FFD',
     primaryColor: '#303233',
 
+    primary_light: 'rgba(48, 50, 51, 0.8)',
+
     secondary: '#C4C4C4',
     secondaryColor: '#EF3C35',
     secondary_light: 'rgba(196, 196, 196, 0.3)',

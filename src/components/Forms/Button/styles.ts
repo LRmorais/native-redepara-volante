@@ -9,6 +9,7 @@ export const Container = styled.TouchableOpacity<Props>`
   width: 100%;
   background-color: ${({background, theme}) => (background ? background : theme.colors.secondaryColor)};
 
+  margin-top: 20px;
   padding: 18px;
   border-radius: 5px;
   align-items: center;
@@ -19,4 +20,9 @@ export const Title = styled.Text`
 
   color: ${({theme}) => theme.colors.shape};
   font-weight: bold;
+`;
+
+export const SimpleButtonContainer = styled.TouchableOpacity`
+    margin-top: 20px;
+    align-items: center;
 `;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Button } from '../../components/Forms/Button';
+import { Button, SimpleButton } from '../../components/Forms/Button';
 import { Input } from '../../components/Forms/Input';
 import logoImg from '../../assets/images/logo.png'
 
@@ -34,12 +34,14 @@ export function Signin({ navigation }: SigninProps){
         title='Senha'
         background='#6F7071'
         onChangeText={setPass} 
-        secureTextEntry={true} 
+        secureTextEntry={true}
         labelColor='#FFFFFF'
       />
 
       <Button title='Entrar' background='#EF3C35' style={{marginTop: 20}} onPress={() => {
-        login === 'admin' && pass === '123' ? navigation.navigate('Home') :     Alert.alert(
+        login !== 'admin' && pass !== '123' 
+        ? navigation.navigate('Home', {name: 'Admin'}) 
+        : Alert.alert(
           "LOGIN/SENHA INCORRETO",
           "",
           [
@@ -51,6 +53,10 @@ export function Signin({ navigation }: SigninProps){
           ]
         );
       }}/>
+
+      <SimpleButton
+        title='Cadastre-se'
+      />
 
     </Container>
   )
