@@ -10,11 +10,11 @@ interface Props extends TextInputProps{
   background?: string
 }
 
-export function Input({ title ,...rest} : Props){
+export function Input({ title, background, labelColor } : Props){
   return(
     <Wrapper>
-      <Label>{title}</Label>
-      <Container {...rest}/>
+      <Label labelColor={labelColor}>{title}</Label>
+      <Container background={background}/>
     </Wrapper>
 
 
