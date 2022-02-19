@@ -1,6 +1,7 @@
 import React from 'react';
-import logoImg from '../../assets/images/logo.png'
-
+import logoImg from '../../assets/images/logo.png';
+import SideBarIcon from '../../assets/icons/stream.svg';
+import {TouchableOpacity, Text} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import {RacesCard, RacingCardProps} from '../../components/RacesCard';
@@ -104,7 +105,11 @@ export function Home({navigation, route}: HomeProps) {
   ];
   return (
     <Container>
+
       <Logo source={logoImg} resizeMode='contain'/>
+      <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <SideBarIcon width={30} height={30} fill="#EF3C35"/>
+      </TouchableOpacity>
       <Welcome>{`Bem vindo, ${name ? name : 'admin'}!`}</Welcome>
       <AmountContent>
         <AmountWrapper>

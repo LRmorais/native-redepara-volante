@@ -16,9 +16,9 @@ export function Button({ title, ...rest } : Props) {
   )
 }
 
-export function SimpleButton({ title } : Props){
+export function SimpleButton({ title, ...rest } : Props){
   return(
-    <SimpleButtonContainer>
+    <SimpleButtonContainer {...rest}>
       <Title>{title}</Title>
     </SimpleButtonContainer>
   )

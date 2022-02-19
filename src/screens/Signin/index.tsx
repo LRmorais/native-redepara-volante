@@ -56,6 +56,8 @@ export function Signin({ navigation }: SigninProps){
 
       <SimpleButton
         title='Cadastre-se'
+        onPress={() =>{ navigation.navigate('Signup');
+        } }
       />
 
     </Container>
