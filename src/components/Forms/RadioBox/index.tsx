@@ -8,7 +8,8 @@ interface RadioProps {
 			key: string;
 			text: string;
 		}
-	]
+	],
+	changeType: (data:string) => void;
 
 }
 
@@ -25,6 +26,7 @@ export function RadioButton(props: RadioProps) {
 							<TouchableOpacity
 								style={styles.radioCircle}
 								onPress={() => {
+									props.changeType(res.key)
 									setValue(res.key)
 								}}>
                                   {value === res.key && <View style={styles.selectedRb} />}

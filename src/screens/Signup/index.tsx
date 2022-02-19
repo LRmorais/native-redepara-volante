@@ -41,6 +41,11 @@ interface SigninProps{
 export function Signup({ navigation }: SigninProps){
   const [login, setLogin] = useState('')
   const [pass, setPass] = useState('')
+  const [vehicleType, setVehicleType] = useState('')
+
+  function handleVehicleType(type: string){
+    setVehicleType(type)
+  }
 
   return (
     <Container>
@@ -95,14 +100,19 @@ export function Signup({ navigation }: SigninProps){
         labelColor='#FFFFFF'
         />
 
-        <RadioButton data={PROP} />
-      <Input 
-        title='Placa do veículo'
-        background='#6F7071'
-        onChangeText={setPass} 
-        secureTextEntry={true}
-        labelColor='#FFFFFF'
-        />
+        <RadioButton data={PROP} changeType={handleVehicleType}/>
+        {
+          vehicleType !== 'bike' ? (
+            <Input 
+            title='Placa do veículo'
+            background='#6F7071'
+            onChangeText={setPass} 
+            secureTextEntry={true}
+            labelColor='#FFFFFF'
+            />
+          ) : null
+        }
+
       <Input 
         title='Senha'
         background='#6F7071'
