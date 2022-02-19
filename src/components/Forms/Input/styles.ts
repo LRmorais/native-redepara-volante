@@ -27,6 +27,7 @@ export const Container = styled.TextInput<PropsInput>`
 
 export const Label = styled.Text<PropsLabel>`
   color: ${({labelColor}) => (labelColor ? labelColor : '#000000')};
+  font-weight: 700;
   font-size: ${RFValue(18)}px;
   margin-bottom: 10px;
 `;
