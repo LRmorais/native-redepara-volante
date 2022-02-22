@@ -6,7 +6,7 @@ export const Container = styled.View`
   justify-content: flex-start;
   padding: ${RFPercentage(3)}px;
   background-color: ${({ theme }) => theme.colors.primaryColor};
-`
+`;
 
 export const BackButtonContainer = styled.TouchableOpacity`
   flex-direction: row;
@@ -29,12 +29,8 @@ export const Title = styled.Text`
   font-weight: 700;
 `
 
-export const Logo = styled.Image`
-  width: 100%;
-  height: 8%;
-  margin-bottom: 20px;
-`;
-
-export const Space = styled.View`
-  height: 150;
-`;
+export const Descriptions = styled.Text`
+  font-size: ${RFValue(18)}px;
+  margin-bottom: 10px;
+  color: ${({ theme }) => theme.colors.text};
+`

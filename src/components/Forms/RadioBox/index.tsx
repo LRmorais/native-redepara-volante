@@ -15,7 +15,7 @@ interface RadioProps {
 
 export function RadioButton(props: RadioProps) {
 
-	const [value, setValue] = useState('')
+	const [value, setValue] = useState('carro')
 		return (
 			<View>
 				<Label labelColor='#FFF'>Veiculo:</Label>

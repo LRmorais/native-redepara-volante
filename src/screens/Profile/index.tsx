@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { Button } from '../../components/Forms/Button';
 import { Input } from '../../components/Forms/Input';
-import logoImg from '../../assets/images/logo.png'
 import BackIcon from '../../assets/icons/arrow-left.svg'
 
-import { View, StyleSheet } from 'react-native';
 import {RadioButton} from '../../components/Forms/RadioBox';
 
 const PROP = [
@@ -31,14 +28,14 @@ import {
   Title,
   Space,
 } from './styles';
-import { Alert } from 'react-native';
+
 import { ScrollView } from 'react-native-gesture-handler';
 
 interface SigninProps{
   navigation: NativeStackNavigationProp<any,any>
 }
 
-export function Signup({ navigation }: SigninProps){
+export function Profile({ navigation }: SigninProps){
   const [login, setLogin] = useState('')
   const [pass, setPass] = useState('')
   const [vehicleType, setVehicleType] = useState('')
@@ -49,84 +46,79 @@ export function Signup({ navigation }: SigninProps){
 
   return (
     <Container>
-      <BackButtonContainer onPress={() => navigation.navigate('Signin')}>
+      <BackButtonContainer onPress={() => navigation.navigate('Home')}>
         <BackIcon width={20} height={20} fill="#FFF" />
         <Label>Voltar</Label>
       </BackButtonContainer>
 
       <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
-      <Logo source={logoImg} resizeMode='contain'/>
-      <Title>Cadastre-se no Rede Pará Volante</Title>
+      <Title>Informações do usuário</Title>
       <Input 
         title='Nome Completo' 
         background='#6F7071'
         onChangeText={setLogin} 
         autoCapitalize='none' 
         labelColor='#FFFFFF'
+        editable={false}
+        value='Admin'
         />
       <Input 
         title='CPF'
         background='#6F7071'
         onChangeText={setPass} 
-        secureTextEntry={true}
         labelColor='#FFFFFF'
+        editable={false}
+        value='022.650.255-40'
         />
       <Input 
         title='Numero de telefone'
         background='#6F7071'
         onChangeText={setPass} 
         labelColor='#FFFFFF'
+        editable={false}
+        value='(91) 99344-5588'
         />
       <Input 
         title='Bairro'
         background='#6F7071'
         onChangeText={setPass} 
         labelColor='#FFFFFF'
+        editable={false}
+        value='Marambaia'
         />
       <Input 
         title='Cidade'
         background='#6F7071'
         onChangeText={setPass} 
+        secureTextEntry={true}
         labelColor='#FFFFFF'
+        editable={false}
+        value='Belém'
         />
       <Input 
         title='CEP'
         background='#6F7071'
         onChangeText={setPass} 
+        secureTextEntry={true}
         labelColor='#FFFFFF'
+        editable={false}
+        value='66615-005'
         />
 
-        <RadioButton data={PROP} changeType={handleVehicleType} key="carro"/>
+        <RadioButton data={PROP} changeType={handleVehicleType} />
         {
           vehicleType !== 'bike' ? (
             <Input 
             title='Placa do veículo'
             background='#6F7071'
             onChangeText={setPass} 
-  
             labelColor='#FFFFFF'
+            editable={false}
+            value='BMW2021'
             />
           ) : null
         }
 
-      <Input 
-        title='Senha'
-        background='#6F7071'
-        onChangeText={setPass} 
-        labelColor='#FFFFFF'
-        secureTextEntry={true}
-        />
-      <Input 
-        title='Confirmar senha'
-        background='#6F7071'
-        onChangeText={setPass} 
-        labelColor='#FFFFFF'
-        secureTextEntry={true}
-        />
-
-      <Button title='Cadastrar' background='#EF3C35' style={{marginTop: 20}} onPress={() => {
-        navigation.navigate('Signin')
-        }}/>
         <Space />
     </ScrollView>
 

@@ -29,12 +29,6 @@ export const Title = styled.Text`
   font-weight: 700;
 `
 
-export const Logo = styled.Image`
-  width: 100%;
-  height: 8%;
-  margin-bottom: 20px;
-`;
-
 export const Space = styled.View`
   height: 150;
 `;

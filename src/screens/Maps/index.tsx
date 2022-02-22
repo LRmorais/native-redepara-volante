@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {View, Dimensions, StyleSheet, Alert, BackHandler} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
@@ -60,7 +60,7 @@ export const Maps: React.FC = props => {
   const data: Data = props.route.params.data;
   const playbackState = usePlaybackState();
   const [start, setStart] = useState('off');
-  console.log("playbackstate: ", playbackState)
+
   const [state, setState] = useState<Props>({
     startingCords: {
       latitude: data.startLatitude,

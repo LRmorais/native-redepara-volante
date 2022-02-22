@@ -116,7 +116,10 @@ export function Home({navigation, route}: HomeProps) {
           <Label>Ganhos</Label>
           <Amount>R$ 350,00</Amount>
         </AmountWrapper>
-        <BackButton name="rightcircleo" />
+        <TouchableOpacity onPress={() => navigation.navigate('RacesList')}>
+          <BackButton name="rightcircleo" />
+        </TouchableOpacity>
+
       </AmountContent>
 
       <Races>

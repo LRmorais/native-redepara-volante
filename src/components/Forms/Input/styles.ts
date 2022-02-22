@@ -15,7 +15,7 @@ export const Container = styled.TextInput<PropsInput>`
   width: 100%;
   padding: 16px 18px;
 
-  font-size: ${RFValue(14)}px;
+  font-size: ${RFValue(18)}px;
   color: ${({theme}) => theme.colors.text};
 
   background-color: ${({background}) => (background ? background : '#ffffff')};

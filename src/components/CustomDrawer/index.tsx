@@ -26,7 +26,7 @@ const customDrawerContent = (props) => {
       </View>
 
       <ScrollView style={{ marginLeft: 5, paddingHorizontal: 20 }}>
-        <TouchableOpacity style={{ marginTop: 20 }} onPress={() => props.navigation.navigate('ChangeUserInfo')}>
+        <TouchableOpacity style={{ marginTop: 20 }} onPress={() => props.navigation.navigate('Profile')}>
           <Text style={{ color: '#fff', fontSize: 20 }}>Ver Cadastro</Text>
         </TouchableOpacity>
 
@@ -34,21 +34,17 @@ const customDrawerContent = (props) => {
           <Text style={{ color: '#fff', fontSize: 20 }}>Alterar Senha</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ marginTop: 20 }} onPress={() => props.navigation.navigate('completeRegister')}>
-          <Text style={{ color: '#fff', fontSize: 20 }}>Editar Senha</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={{ marginTop: 20 }} onPress={() => props.navigation.navigate('MenuTab')}>
+        <TouchableOpacity style={{ marginTop: 20 }} onPress={() => props.navigation.navigate('RacesList')}>
           <Text style={{ color: '#fff', fontSize: 20 }}>Ver Ganhos</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ marginTop: 20 }} onPress={() => props.navigation.navigate('MenuTab')}>
+        <TouchableOpacity style={{ marginTop: 20 }} onPress={() => props.navigation.navigate('Home')}>
           <Text style={{ color: '#fff', fontSize: 20 }}>Atendimento WhatsApp</Text>
         </TouchableOpacity>
       </ScrollView>
 
       {/* <TouchableOpacity style={{ marginTop: 20, paddingHorizontal: 20 }} onPress={logout}> */}
-      <TouchableOpacity style={{ marginBottom: 20, paddingHorizontal: 20 }}>
+      <TouchableOpacity style={{ marginBottom: 20, paddingHorizontal: 20 }} onPress={() => props.navigation.navigate('Signin')}>
         <Text style={{ color: '#fff', fontSize: 20 }}>Sair</Text>
       </TouchableOpacity>
     </SafeAreaView>

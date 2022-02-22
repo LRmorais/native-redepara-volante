@@ -42,7 +42,7 @@ nav
 
         <Route>
         <Track>
-          {`Saída: ${data.end}`}
+          {`Início: ${data.end}`}
         </Track>
         <Track>
         {`Chegada: ${data.start}`}
