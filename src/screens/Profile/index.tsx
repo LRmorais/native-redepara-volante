@@ -30,6 +30,8 @@ import {
 } from './styles';
 
 import { ScrollView } from 'react-native-gesture-handler';
+import { useFocusEffect, useNavigationState } from '@react-navigation/native';
+import { BackHandler } from 'react-native';
 
 interface SigninProps{
   navigation: NativeStackNavigationProp<any,any>
@@ -43,6 +45,26 @@ export function Profile({ navigation }: SigninProps){
   function handleVehicleType(type: string){
     setVehicleType(type)
   }
+
+  const screenName = useNavigationState((state) => state.routes[state.index].name)
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (screenName === 'Profile') {
+         navigation.navigate('Home');
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
 
   return (
     <Container>

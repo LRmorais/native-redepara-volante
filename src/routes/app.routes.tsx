@@ -1,11 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from "@react-navigation/drawer";
 import Screens from '../screens';
 import CustomDrawer from '../components/CustomDrawer/index';
-
-const {Navigator, Screen} = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
 
@@ -13,6 +10,7 @@ const options = {
   gestureEnabled: false,
   swipeEnabled: false
 }
+
 
 export function AppRoutes() {
   return (
@@ -32,6 +30,7 @@ export function AppRoutes() {
         <Drawer.Screen name="Profile" component={Screens.Profile} options={options}/>
         <Drawer.Screen name="ChangePassword" component={Screens.ChangePassword} options={options}/>
         <Drawer.Screen name="RacesList" component={Screens.RacesList} options={options}/>
+        <Drawer.Screen name="Notifications" component={Screens.Notifications} options={options}/>
       </Drawer.Navigator>
     </NavigationContainer>
   );

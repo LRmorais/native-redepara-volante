@@ -27,6 +27,7 @@ import {
   Separator,
   PlayerContainer,
 } from './styles';
+import { useFocusEffect, useNavigationState } from '@react-navigation/native';
 
 interface Props {
   startingCords: {
@@ -79,7 +80,7 @@ export const Maps: React.FC = props => {
     
     Alert.alert(
       "Tem certeza que deseja cancelar ?",
-      "",
+      "Uma taxa de cancelamento será cobrada caso prossiga !",
       [
         {
           text: "Não",
@@ -93,26 +94,39 @@ export const Maps: React.FC = props => {
     );
   }
 
-  useEffect(() => {
-    const backAction = () => {
-      Alert.alert("Cancelar serviço!", "Será cobrado uma taxa de cancelamento! Deseja continuar?", [
-        {
-          text: "Cancelar",
-          onPress: () => null,
-          style: "cancel"
-        },
-        { text: "Sim", onPress: () => BackHandler.exitApp() }
-      ]);
-      return true;
-    };
+  const screenName = useNavigationState((state) => state.routes[state.index].name)
 
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction
-    );
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (screenName === 'Maps') {
+          Alert.alert(
+            "Tem certeza que deseja cancelar ?",
+            "Uma taxa de cancelamento será cobrada caso prossiga !",
+            [
+              {
+                text: "Não",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "Sim", onPress: () => {props.navigation.navigate('Home');
+              TrackPlayer.stop();
+            } }
+            ]
+          );
+          return true;
+        } else {
+          return false;
+        }
+      };
 
-    return () => backHandler.remove();
-  }, []);
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
+
 
   return (
     <View style={{flex: 1}}>

@@ -5,7 +5,7 @@ import { Input } from '../../components/Forms/Input';
 import logoImg from '../../assets/images/logo.png'
 import BackIcon from '../../assets/icons/arrow-left.svg'
 
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, BackHandler } from 'react-native';
 import {RadioButton} from '../../components/Forms/RadioBox';
 
 const PROP = [
@@ -33,6 +33,7 @@ import {
 } from './styles';
 import { Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useFocusEffect, useNavigationState } from '@react-navigation/native';
 
 interface SigninProps{
   navigation: NativeStackNavigationProp<any,any>
@@ -46,6 +47,26 @@ export function Signup({ navigation }: SigninProps){
   function handleVehicleType(type: string){
     setVehicleType(type)
   }
+
+  const screenName = useNavigationState((state) => state.routes[state.index].name)
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (screenName === 'Signup') {
+         navigation.navigate('Signin');
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
 
   return (
     <Container>

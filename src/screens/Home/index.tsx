@@ -1,10 +1,17 @@
-import React from 'react';
-import logoImg from '../../assets/images/logo.png';
-import SideBarIcon from '../../assets/icons/stream.svg';
-import {TouchableOpacity, Text} from 'react-native';
+import React, { useEffect } from 'react';
+import {TouchableOpacity, BackHandler, Alert, View} from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
+
 import {RacesCard, RacingCardProps} from '../../components/RacesCard';
+
+import logoImg from '../../assets/images/logo.png';
+import SideBarIcon from '../../assets/icons/stream.svg';
+import NotificationsIcon from '../../assets/icons/bell-on.svg';
+
+
 
 import {
   Container,
@@ -20,6 +27,7 @@ import {
   RacesList,
   Separator,
 } from './styles';
+import { useBackHandler } from '../../hooks/useBackHandler';
 
 export interface DatalistProps extends RacingCardProps {
   id: string;
@@ -32,7 +40,34 @@ interface HomeProps {
 
 export function Home({navigation, route}: HomeProps) {
   const name: string = route.params?.name;
+  const routeName = useRoute();
 
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (routeName.name == 'Home') {
+      Alert.alert("Logout!", "Deseja realmente sair deslogar ?", [
+        {
+          text: "Não",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "Sim", onPress: () => navigation.navigate('Signin') }
+      ]);
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
+
+  
   const data: DatalistProps[] = [
     {
       id: '1',
@@ -107,9 +142,15 @@ export function Home({navigation, route}: HomeProps) {
     <Container>
 
       <Logo source={logoImg} resizeMode='contain'/>
-      <TouchableOpacity onPress={() => navigation.openDrawer()}>
-        <SideBarIcon width={30} height={30} fill="#EF3C35"/>
-      </TouchableOpacity>
+      <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <SideBarIcon width={30} height={30} fill="#EF3C35"/>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Notifications')}>
+          <NotificationsIcon width={30} height={30} fill="#EF3C35"/>
+        </TouchableOpacity>
+      </View>
+
       <Welcome>{`Bem vindo, ${name ? name : 'admin'}!`}</Welcome>
       <AmountContent>
         <AmountWrapper>

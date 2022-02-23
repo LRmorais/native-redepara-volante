@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {MusicPlayer} from '../../components/MusicPlayer/index';
 import TrackPlayer from 'react-native-track-player';
 
@@ -22,6 +22,9 @@ import {
   ContainerButton,
   PlayerContainer
 } from './styles';
+import { useFocusEffect, useNavigationState, useRoute } from '@react-navigation/native';
+import { useBackHandler } from '../../hooks/useBackHandler';
+import { Alert, BackHandler } from 'react-native';
 
 interface Data {
   start: string;
@@ -37,6 +40,28 @@ interface Data {
 export function ConfirmTrip(props: any) {
   //@ts-ignore
   const data: Data = props.route.params.data;
+
+  const screenName = useNavigationState((state) => state.routes[state.index].name)
+
+  // const {gestureBackHandler} = useBackHandler();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (screenName === 'ConfirmTrip') {
+          props.navigation.navigate('Home');
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
 
   return (
     <>

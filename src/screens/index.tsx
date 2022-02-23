@@ -7,6 +7,7 @@ import {Maps} from './Maps';
 import { Profile } from './Profile';
 import { ChangePassword } from './ChangePassword';
 import { RacesList } from './RacesList';
+import { Notifications } from './Notifications';
 
 export default {
   Intro,
@@ -18,4 +19,5 @@ export default {
   Profile,
   ChangePassword,
   RacesList,
+  Notifications,
 };

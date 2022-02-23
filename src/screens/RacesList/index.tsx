@@ -1,5 +1,6 @@
+import { useFocusEffect, useNavigationState } from '@react-navigation/native';
 import React from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { BackHandler, FlatList, Text, View } from 'react-native';
 import BackIcon from '../../assets/icons/arrow-left.svg'
 import CheckIcon from '../../assets/icons/map-marker-check.svg'
 import XIcon from '../../assets/icons/map-marker-times.svg'
@@ -62,6 +63,25 @@ const data: RenderItemProps[] = [
 
 
 export function RacesList({navigation}){
+  const screenName = useNavigationState((state) => state.routes[state.index].name)
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        if (screenName === 'RacesList') {
+         navigation.navigate('Home');
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, [])
+  );
 
   const renderItem = ({item}) =>{
     return(
