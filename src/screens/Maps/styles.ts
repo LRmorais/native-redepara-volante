@@ -10,19 +10,29 @@ export const Header = styled.View`
   flex-direction: column;
   background-color: ${({theme}) => theme.colors.primaryColor};
 `;
+export const HeaderContent = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+`;
 export const BackButton = styled.TouchableOpacity`
   flex-direction: row;
-  width: 20%;
+  align-items: center;
 `;
+
+export const ChatAction = styled.TouchableOpacity`
+`;
+
 export const HeaderText = styled.Text`
-  padding: 15px;
+  margin-left: 15px;
   color: ${({theme}) => theme.colors.shape};
-  font-size: ${RFValue(14)}px;
+  font-size: ${RFValue(20)}px;
 `;
 
 export const BackIcon = styled(AntDesign)`
-  padding: 15px;
-  font-size: ${RFValue(20)}px;
+  font-size: ${RFValue(30)}px;
   color: ${({theme}) => theme.colors.shape};
 `;
 export const ButtonContainer = styled.TouchableOpacity`

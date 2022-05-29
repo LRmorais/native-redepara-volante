@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import {View, Dimensions, StyleSheet, Alert, BackHandler} from 'react-native';
+import {View, Dimensions, StyleSheet, Alert, BackHandler, Linking} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 
@@ -7,6 +7,7 @@ import {GOOGLE_MAP_KEY} from '../../constantes/googleMapsKey';
 import imagePath from '../../constantes/imagePath';
 import InitialIcon from '../../assets/icons/map-marker-alt.svg'
 import FinalIcon from '../../assets/icons/map-marker-check.svg'
+import ChatIcon from '../../assets/icons/comment-dots.svg'
 
 import TrackPlayer, {RepeatMode, usePlaybackState} from 'react-native-track-player';
 
@@ -15,9 +16,11 @@ import {MusicPlayer} from '../../components/MusicPlayer';
 import {
   ButtonContainer,
   Header,
+  HeaderContent,
   BackButton,
   BackIcon,
   HeaderText,
+  ChatAction,
   InfoBox,
   InfoWrapper,
   RowWrapper,
@@ -127,17 +130,26 @@ export const Maps: React.FC = props => {
     }, [])
   );
 
+  function sendLinkRecord() {
+    Linking.openURL('https://google.com.br').catch(() => {});
+  }
+
 
   return (
     <View style={{flex: 1}}>
       <Header>
-
+        <HeaderContent>
           <BackButton onPress={() => handleCancell()}>
             <BackIcon name="arrowleft" />
             <HeaderText>{start === 'off' ? 'Voltar' : 'Cancelar' }</HeaderText>
           </BackButton>
+          <ChatAction onPress={() => sendLinkRecord()}>
+            <ChatIcon width={30} height={30} fill="#21cd12"/>
+          </ChatAction>
+        </HeaderContent>
 
       </Header>
+
       <View style={{flex: 1}}>
         {data ? (
           <MapView
